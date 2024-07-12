@@ -28,8 +28,13 @@
 # Set-ExecutionPolicy unrestricted
 # Type "Get-ExecutionPolicy" in the same window to check that the policy is now unrestricted.
 
-# Replace "YOUR USER DIRECTORY" in line 45 of this script with your windows account name. 
+# Replace "YOUR USER DIRECTORY" in line 53 of this script with your windows account name. 
 # If you're not sure, check the name by going into "Users" folder in your main hard drive & click on the white address bar at the top of your window to reveal the file path.
+
+# Right-click on your Powershell script, then click on "Properties." Change the "Opens with" setting so that files saved with a .ps1 extension are opened through Powershell by default.
+# Powershell is most likely located in "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
+# If you're not sure where it is, press the windows button and type Powershell, then right-click Powershell and click on open file location.
+# This will lead you to the shortcut for Powershell, right-click the shortcut then open file location again and you should see the Powershell exe.
 
 # Actual start of script:
 # X second lag to let PIA VPN retrieve port forward number after making a full connection. Adjust the amount to fit with your setup.
