@@ -27,8 +27,8 @@
 # Powershell is most likely located in "C:\Windows\System32\WindowsPowerShell\v1.0\"
 # If you're not sure where it is, press the windows button and type Powershell, then right-click Powershell and click on open file location.
 # This will lead you to the shortcut for Powershell, right-click the shortcut then open file location again and you should see the Powershell exe.
-# In the "Add arguments" section of the same window where you pointed to Powershell.exe, you want to paste the full filepath of your script and type -File before it like below.
-# -File "C:\Program Files\qBittorrent\qbitportforwardstartup.ps1"
+# In the "Add arguments" section of the same window where you pointed to Powershell.exe, you want to paste the full filepath of your script and type -WindowStyle Hidden -File before it like below.
+# -WindowStyle Hidden -File "C:\Program Files\qBittorrent\qbitportforwardstartup.ps1"
 # Press OK. Now all we need to do is modify the script to work on your personal machine & remove restrictions on Powershell so that it can actually run the script.
 
 # Note: This task will also cause qBit to close when your VPN disconnects, but not if you close PIA yourself. It will also reopen qBit whenever your VPN connects again, not just at startup.
