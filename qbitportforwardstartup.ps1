@@ -23,11 +23,11 @@
 # Click on either "Administrators" or your microsoft username that has your email attached to it. Note: If you want to use "Administrators," make sure you are not clicking on "Administrator."
 # Press OK.
 
-# In the "Actions" tab of the task window, click on "New..." and select "Start a program" as your action. Then point to the Powershell.exe, not the script or qBit.
-# Powershell is most likely located in "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
+# In the "Actions" tab of the task window, click on "New..." and select "Start a program" as your action. Then point to Powershell.exe, not the script or qBit.
+# Powershell is most likely located in "C:\Windows\System32\WindowsPowerShell\v1.0\"
 # If you're not sure where it is, press the windows button and type Powershell, then right-click Powershell and click on open file location.
 # This will lead you to the shortcut for Powershell, right-click the shortcut then open file location again and you should see the Powershell exe.
-# In the "Add arguments" section of the same window, you want to paste the full filepath of your script and type -File before it like below.
+# In the "Add arguments" section of the same window where you pointed to Powershell.exe, you want to paste the full filepath of your script and type -File before it like below.
 # -File "C:\Program Files\qBittorrent\qbitportforwardstartup.ps1"
 # Press OK
 
