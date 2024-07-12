@@ -1,4 +1,4 @@
-# First, paste all lines of this script to notepad and save it as DESIRED_NAME.ps1 so that it gets saved as a Powershell script.
+# First, right-click and open up notepad as administrator, paste the entire script, and save it as DESIRED_NAME.ps1 so that it gets saved as a Powershell script.
 # You can put the Powershell script in the same folder as your qBit exe file if you want.
 # This Powershell script is meant to be used with windows task scheduler, with the following trigger. Create new task, not a basic task.
 # Trigger: "On an event"
@@ -8,7 +8,7 @@
 
 # Also be sure to check "Start only if the following network connection is available" in the Conditions tab then select "wgpia0" which is the network connection for PIA VPN WireGuard.
 # If you want to use OpenVPN Protocol for PIA you might need another method to modify the trigger, as OpenVPN does not create a network name you can just point to.
-# This trigger ensures that the actions you want to run only start when a network connection has been fully established.
+# This trigger ensures that the actions you want to run only start when the PIA network connection has been fully established.
 # If you want to autorun qBit at startup, you want this trigger because qBit does not automatically re-establish a connection if you open it up before a connection is made.
 # You may need to select "Run with highest privileges" in the General tab of the task window. You may also need to change the "Configure for" setting to Windows 10.
 # You might want to uncheck "Stop the task if it runs longer than:" in the Settings tab.
@@ -22,16 +22,19 @@
 # In the "Actions" tab of the task window, click on "New..." and select "Start a program" as your action. Then point to the powershell script, not your qBit exe.
 
 # Note: This task will also cause qBit to close when your VPN disconnects, but not if you close PIA yourself. It will also reopen qBit whenever your VPN connects again, not just at startup.
-# The script along with the task should ensure that the port forward number for PIA is checked every time your qBit starts on its own through the task trigger.
+# The script along with the task should ensure that the port forward number for PIA is checked & appropriately changed in qBit every time (Right before) your qBit starts on its own through the task trigger/script.
 
 # Ensure that Powershell is in unrestricted mode so that you can execute scripts with it. Right-click on Powershell and open as administrator. Type the below in Powershell window.
 # Set-ExecutionPolicy unrestricted
 # Type "Get-ExecutionPolicy" in the same window to check that the policy is now unrestricted.
 
-# Replace "YOUR USER DIRECTORY" in line 28 of this script with your windows account name. 
-# If you're not sure, check the name by browsing to "Users" folder in your main hard drive.
+# Replace "YOUR USER DIRECTORY" in line 45 of this script with your windows account name. 
+# If you're not sure, check the name by going into "Users" folder in your main hard drive & click on the white address bar at the top of your window to reveal the file path.
 
-# X second lag to let PIA VPN retreive port forward number after making a full connection. Adjust the amount to fit with your setup.
+# Actual start of script:
+# X second lag to let PIA VPN retrieve port forward number after making a full connection. Adjust the amount to fit with your setup.
+# The moment when PIA interface reveals the port forward number may be a few moments after the moment when the port forward number is actually retrieved.
+Write-Host "Waiting five seconds for Port Forward retrieval by PIA VPN."
 Start-Sleep -Seconds 5
 
 Write-Host "Checking for forwarded port."
@@ -45,5 +48,6 @@ Write-Host "Setting port to" $PortPia"."
 $FichierIni = "C:\Users\YOUR USER DIRECTORY\AppData\Roaming\qBittorrent\qBittorrent.ini"
 (Get-Content $FichierIni) -replace "Connection\\PortRangeMin=\d*", "Connection\PortRangeMin=$PortPia" | Set-Content -Path $FichierIni
 
-# Make sure the following is the actual path to your qBit exe file, or just change the line to where you have it saved.
-Start-Process "C:\Program Files\qBittorrent\qbittorrent.exe"
+# Make sure the following is the actual path to your qBit exe file, or change the line to where you have it saved.
+Write-Host "Starting up qBit."
+Start-Process -FilePath "C:\Program Files\qBittorrent\qbittorrent.exe"
