@@ -5,12 +5,12 @@
 # Press windows button and type in "Task Scheduler." In Task Scheduler, on the right side panel click on "Create task," not "Create basic task."
 # On the "Triggers" tab of the newly opened window, click on "New..." on the bottom left.
 # In your "New Trigger" window, click the drop down menu at the top next to "Begin the task:"
-# Select "On an event" in the drop down menu, then fill in the following information.
+# Select "On an event" in the drop down menu, then fill in the following information and press OK.
 # Log: Microsoft-Windows-NetworkProfile/Operation
 # Source: NetworkProfile
 # Event ID: 10000
 
-# Also be sure to check "Start only if the following network connection is available" in the Conditions tab then select "wgpia0" which is the network connection for PIA VPN WireGuard.
+# In the Conditions tab, check "Start only if the following network connection is available" then select "wgpia0" which is the network connection for PIA VPN WireGuard.
 # If you want to use OpenVPN Protocol for PIA you might need another method to modify the trigger, as OpenVPN does not create a network name you can just point to.
 # This trigger ensures that the actions you want to run only start when the PIA network connection has been fully established.
 # If you want to autorun qBit at startup, you want this trigger because qBit does not automatically re-establish a connection if you open it up before a connection is made.
