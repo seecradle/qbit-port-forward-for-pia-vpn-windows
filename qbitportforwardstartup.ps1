@@ -29,7 +29,7 @@
 # This will lead you to the shortcut for Powershell, right-click the shortcut then open file location again and you should see the Powershell exe.
 # In the "Add arguments" section of the same window where you pointed to Powershell.exe, you want to paste the full filepath of your script and type -File before it like below.
 # -File "C:\Program Files\qBittorrent\qbitportforwardstartup.ps1"
-# Press OK
+# Press OK. Now all we need to do is modify the script to work on your personal machine & remove restrictions on Powershell so that it can actually run the script.
 
 # Note: This task will also cause qBit to close when your VPN disconnects, but not if you close PIA yourself. It will also reopen qBit whenever your VPN connects again, not just at startup.
 # The script along with the task should ensure that the port forward number for PIA is checked & appropriately changed in qBit every time (Right before) your qBit starts on its own through the task trigger/script.
@@ -42,17 +42,17 @@
 # If you're not sure, check the name by going into "Users" folder in your main hard drive & click on the white address bar at the top of your window to reveal the file path.
 
 # Actual start of script:
-# X second lag to let PIA VPN retrieve port forward number after making a full connection. Adjust the amount to fit with your setup.
+# X second lag to let PIA VPN retrieve port forward number after making a full connection. Adjust the amount to fit with your setup, but 5 seconds should be enough.
 # The moment when PIA interface reveals the port forward number may be a few moments after the moment when the port forward number is actually retrieved.
 Start-Sleep -Seconds 5
 
 Write-Host "Checking for forwarded port."
-# Check the forwarded port by PIA
+# The following will make Powershell check the forwarded port by PIA.
 $PortPia = & "C:\Program Files\Private Internet Access\piactl.exe" get portforward
-# Convert variable to integer
+# The following will convert the variable data to integer form for qBit.
 $PortPia = $PortPia -as [int]
 
-# Replace line in the .ini file
+# The following will replace the port forward number line in the .ini file. Make sure to change "YOUR USER DIRECTORY" as stated before.
 Write-Host "Setting port to" $PortPia"."
 $FichierIni = "C:\Users\YOUR USER DIRECTORY\AppData\Roaming\qBittorrent\qBittorrent.ini"
 (Get-Content $FichierIni) -replace "Connection\\PortRangeMin=\d*", "Connection\PortRangeMin=$PortPia" | Set-Content -Path $FichierIni
@@ -60,3 +60,5 @@ $FichierIni = "C:\Users\YOUR USER DIRECTORY\AppData\Roaming\qBittorrent\qBittorr
 # Make sure the following is the actual path to your qBit exe file, or change the line to where you have it saved.
 Write-Host "Starting up qBit."
 Start-Process -FilePath "C:\Program Files\qBittorrent\qbittorrent.exe"
+
+# You're all set!
