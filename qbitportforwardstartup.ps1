@@ -34,13 +34,12 @@
 # Set-ExecutionPolicy unrestricted
 # Type "Get-ExecutionPolicy" in the same window to check that the policy is now unrestricted.
 
-# Replace "YOUR USER DIRECTORY" in line 54 of this script with your windows account name. 
+# Replace "YOUR USER DIRECTORY" in line 53 of this script with your windows account name. 
 # If you're not sure, check the name by going into "Users" folder in your main hard drive & click on the white address bar at the top of your window to reveal the file path.
 
 # Actual start of script:
 # X second lag to let PIA VPN retrieve port forward number after making a full connection. Adjust the amount to fit with your setup.
 # The moment when PIA interface reveals the port forward number may be a few moments after the moment when the port forward number is actually retrieved.
-Write-Host "Waiting five seconds for Port Forward retrieval by PIA VPN."
 Start-Sleep -Seconds 5
 
 Write-Host "Checking for forwarded port."
