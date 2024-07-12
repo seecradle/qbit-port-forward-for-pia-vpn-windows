@@ -19,7 +19,13 @@
 # Click on either "Administrators" or your microsoft username that has your email attached to it. Note: If you want to use "Administrators," make sure you are not clicking on "Administrator."
 # Press OK.
 
-# In the "Actions" tab of the task window, click on "New..." and select "Start a program" as your action. Then point to the powershell script, not your qBit exe.
+# In the "Actions" tab of the task window, click on "New..." and select "Start a program" as your action. Then point to the Powershell.exe, not the script or qBit.
+# Powershell is most likely located in "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
+# If you're not sure where it is, press the windows button and type Powershell, then right-click Powershell and click on open file location.
+# This will lead you to the shortcut for Powershell, right-click the shortcut then open file location again and you should see the Powershell exe.
+# In the "Add arguments" section of the same window, you want to paste the full filepath of your script and type -File before it like below.
+# -File "C:\Program Files\qBittorrent\qbitportforwardstartup.ps1"
+# Press OK
 
 # Note: This task will also cause qBit to close when your VPN disconnects, but not if you close PIA yourself. It will also reopen qBit whenever your VPN connects again, not just at startup.
 # The script along with the task should ensure that the port forward number for PIA is checked & appropriately changed in qBit every time (Right before) your qBit starts on its own through the task trigger/script.
@@ -28,13 +34,8 @@
 # Set-ExecutionPolicy unrestricted
 # Type "Get-ExecutionPolicy" in the same window to check that the policy is now unrestricted.
 
-# Replace "YOUR USER DIRECTORY" in line 53 of this script with your windows account name. 
+# Replace "YOUR USER DIRECTORY" in line 54 of this script with your windows account name. 
 # If you're not sure, check the name by going into "Users" folder in your main hard drive & click on the white address bar at the top of your window to reveal the file path.
-
-# Right-click on your Powershell script, then click on "Properties." Change the "Opens with" setting so that files saved with a .ps1 extension are opened through Powershell by default.
-# Powershell is most likely located in "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
-# If you're not sure where it is, press the windows button and type Powershell, then right-click Powershell and click on open file location.
-# This will lead you to the shortcut for Powershell, right-click the shortcut then open file location again and you should see the Powershell exe.
 
 # Actual start of script:
 # X second lag to let PIA VPN retrieve port forward number after making a full connection. Adjust the amount to fit with your setup.
