@@ -1,3 +1,4 @@
+# You need to read the instructions all the way to the bottom line for this script to work properly.
 # First, right-click and open up notepad as administrator, paste the entire script, and save it as DESIRED_NAME.ps1 so that it gets saved as a Powershell script.
 # You can put the Powershell script in the same folder as your qBit exe file if you want.
 # This Powershell script is meant to be used with windows task scheduler, with the following trigger. Create new task, not a basic task.
@@ -34,7 +35,7 @@
 # Set-ExecutionPolicy unrestricted
 # Type "Get-ExecutionPolicy" in the same window to check that the policy is now unrestricted.
 
-# Replace "YOUR USER DIRECTORY" in line 53 of this script with your windows account name. 
+# Replace "YOUR USER DIRECTORY" in line 54 of this script with your windows account name. 
 # If you're not sure, check the name by going into "Users" folder in your main hard drive & click on the white address bar at the top of your window to reveal the file path.
 
 # Actual start of script:
